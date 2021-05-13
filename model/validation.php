@@ -11,5 +11,12 @@ function validName($name)
 
 function validFlavor($flavors)
 {
-    return count($flavors) > 0;
+    $validFlavors = getFlavors();
+
+    foreach ($flavors as $userChoice) {
+        if (!in_array($userChoice, $validFlavors)) {
+            return false;
+        }
+    }
+    return true;
 }
