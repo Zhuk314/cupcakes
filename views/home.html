@@ -12,16 +12,35 @@
     <title>Cupcakes</title>
 </head>
 <body>
-    <h1>Order cupcakes!</h1>
-    <form action="#" method="post" class="form-horizontal">
-        <repeat group="{{ @cupcakes }}" value="{{ @cupcake }}">
-            <label>
-                <input type="checkbox" name="cups[]"
-                id="{{ @cupcake }}" value="{{ @cupcake }}">
+    <div class="container">
+        <h1>Cupcake Fundraiser</h1>
+        <form action="#" method="post" class="form-horizontal">
+
+            <h2>Your Name</h2>
+            <input class="form-control" type="text" name="name" id="name">
+            <check if="{{ isset(@errors['name']) }}">
+                <span class="err">{{ @errors['name'] }}</span>
+            </check>
+
+            <h2>Cupcake flavors:</h2>
+            <repeat group="{{ @cupcakes }}" value="{{ @cupcake }}">
+                <label>
+                    <input type="checkbox" name="cups[]"
+                           id="{{ @cupcake }}" value="{{ @cupcake }}">
                     {{ ucfirst(@cupcake) }}
-                </input>
-            </label>
-        </repeat>
-    </form>
+                    </input>
+                </label><br>
+            </repeat>
+            <check if="{{ isset(@errors['cups']) }}">
+                <span class="err">{{ @errors['cups'] }}</span>
+            </check>
+
+            <div class="col-xs-3 btn btn-success">
+                <input class="form-control btn btn-default"
+                       type="submit" value="Next">
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
