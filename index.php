@@ -19,6 +19,11 @@ $f3 = Base::instance();
 //Define default route
 $f3->route('GET|POST /', function($f3){
 
+    //Reinitialize session array
+    $_SESSION = array();
+
+    $userCups = array();
+
     //Get the data from the model
     $f3->set('cupcakes', getFlavors());
 
@@ -31,11 +36,16 @@ $f3->route('GET|POST /', function($f3){
             $f3->set('errors["name"]', 'Invalid name');
         }
 
-        //Validate Cupcakes
-        if (validFlavor($_POST['cups'])) {
-            $_SESSION['cups'] = $_POST['cups'];
-        } else {
-            $f3->set('errors["cups"]', 'Invalid flavors');
+        if (!empty($_POST['cups'])) {
+
+            $userCups = $_POST['cups'];
+
+            //Validate Cupcakes
+            if (validFlavor($userCups)) {
+                $_SESSION['cups'] = $userCups;
+            } else {
+                $f3->set('errors["cups"]', 'Invalid flavors');
+            }
         }
 
         if (empty($f3->get('errors'))) {

@@ -13,8 +13,9 @@ function validFlavor($flavors)
 {
     $validFlavors = getFlavors();
 
-    foreach ($flavors as $userChoice) {
+    foreach ($flavors as $userChoice => $userChoice_value) {
         if (!in_array($userChoice, $validFlavors)) {
+            echo "<p>Hey, actually $userChoice FUCKING WORK.<p>";
             return false;
         }
     }

@@ -23,11 +23,13 @@
             </check>
 
             <h2>Cupcake flavors:</h2>
-            <repeat group="{{ @cupcakes }}" value="{{ @cupcake }}">
+            <repeat group="{{ @cupcakes }}"
+                    key="{{ @key }}"
+                    value="{{ @value }}">
                 <label>
                     <input type="checkbox" name="cups[]"
-                           id="{{ @cupcake }}" value="{{ @cupcake }}">
-                    {{ ucfirst(@cupcake) }}
+                           id="{{ @key }}" value="{{ @key }}">
+                    {{ ucfirst(@value) }}
                     </input>
                 </label><br>
             </repeat>
