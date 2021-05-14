@@ -15,6 +15,16 @@
 <div class="container">
     <h1>Summary</h1>
 
+    <h4>Thank you, {{ @SESSION.name }}, for your order!</h4>
+    <p>{{ @SESSION.cups[1]}}</p>
+
+    <ul>
+        <repeat group="{{ @SESSION.cups }}"
+                value="{{ @value }}">
+            <li>{{ @value }}</li>
+        </repeat>
+    </ul>
+
 </div>
 
 </body>
