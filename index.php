@@ -46,7 +46,6 @@ $f3->route('GET|POST /', function($f3){
 
             foreach ($userCups as $cup){
                 array_push($_SESSION['cups'], $cupcakes[$cup]);
-                var_dump($_SESSION['cups']);
             }
         } else {
             $f3->set('errors["cups"]', 'Invalid name');
@@ -66,6 +65,10 @@ $f3->route('GET|POST /', function($f3){
 // Define the route for summary page
 $f3->route('GET|POST /summary', function($f3){
 
+    // Calculate the price
+    $total = count($_SESSION['cups']) * 3.5;
+
+    $_SESSION['total'] = $total;
 
     //Display the summary page
     $view = new Template();

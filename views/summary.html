@@ -13,11 +13,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>Summary</h1>
+    <div class="text-center"><h1>Summary</h1></div>
 
     <h4>Thank you, {{ @SESSION.name }}, for your order!</h4>
-    <p>{{ @SESSION.cups[1]}}</p>
 
+    <h6>Order summary:</h6>
     <ul>
         <repeat group="{{ @SESSION.cups }}"
                 value="{{ @value }}">
@@ -25,6 +25,7 @@
         </repeat>
     </ul>
 
+    <h6>Order total: <span>${{ number_format(@SESSION.total, 2) }}</span></h6>
 </div>
 
 </body>
